@@ -9,7 +9,7 @@ interface FoodRepository{
     fun getFood(): List<FoodResponse>
 }
 
-class FoodRepositoryImpl @Inject constructor(private val foodService: FoodService): FoodRepository {
+open class FoodRepositoryImpl @Inject constructor(private val foodService: FoodService): FoodRepository {
 
     override fun getFood(): List<FoodResponse> {
         return foodService.getFood()

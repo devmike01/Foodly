@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainActivityViewModel @Inject constructor(private val repository: FoodRepositoryImpl): ViewModel() {
+open class MainActivityViewModel @Inject constructor(private val repository: FoodRepositoryImpl): ViewModel() {
 
     private val _foodLiveData = MutableLiveData<Resource<List<FoodResponse>>>()
     val foodLiveData : LiveData<Resource<List<FoodResponse>>> = _foodLiveData
