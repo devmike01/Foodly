@@ -66,7 +66,8 @@ class MainActivity : AppCompatActivity() {
 
         foodListAdapter.setOnClickCityListener(object : FoodListAdapter.OnClickCityListener{
             override fun onClickCity(foodResponse: FoodResponse) {
-                FoodDetailsDialogFragment().show(supportFragmentManager.beginTransaction(), "")
+                //FoodDetailsDialogFragment().show(supportFragmentManager.beginTransaction(), "")
+                FoodDetailsDialogFragment.add(this@MainActivity, R.id.main_layout)
                 mainActivityViewModel.showDetails(foodResponse)
             }
 

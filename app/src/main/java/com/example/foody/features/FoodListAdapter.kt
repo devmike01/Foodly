@@ -58,7 +58,7 @@ class FoodListAdapter @Inject constructor(): ListAdapter<FoodResponse, FoodListA
                 foodNameTv.text = foodResponse.productName
                 nutrientTv.text = foodResponse.nutrients
                 quantityTv.text = context.getString(R.string.title_quantity, foodResponse.quantity)
-                priceTv.text = foodResponse.price
+                priceTv.text = itemView.context.resources.getString(R.string.naira_amount, foodResponse.price)
             }
         }
     }

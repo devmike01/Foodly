@@ -40,8 +40,10 @@ class FoodDetailsDialogFragment : Fragment() {
         fun add(context: FragmentActivity, resId: Int){
             context.supportFragmentManager
                 .beginTransaction()
-                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                .add(resId, FoodDetailsDialogFragment())
+                .setCustomAnimations(R.anim.slide_in, android.R.anim.slide_out_right, R.anim.slide_in, android.R.anim.slide_out_right)
+                .replace(resId, FoodDetailsDialogFragment())
+                .addToBackStack(null)
+                .commit()
         }
     }
 
