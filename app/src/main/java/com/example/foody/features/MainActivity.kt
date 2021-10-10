@@ -1,26 +1,22 @@
 package com.example.foody.features
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.foody.R
 import com.example.foody.databinding.ActivityMainBinding
-import com.example.foody.features.dialogs.FoodDetailsDialogFragment
+import com.example.foody.features.dialogs.FoodDetailsFragment
 import com.example.foody.repository.models.FoodResponse
 import com.example.foody.utils.ResourceStates
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -60,14 +56,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         foodRecyclerView?.run {
-            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            val columnCount = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){ 3 }else{ 2 }
+            layoutManager = StaggeredGridLayoutManager(columnCount , StaggeredGridLayoutManager.VERTICAL)
             adapter = foodListAdapter
         }
 
         foodListAdapter.setOnClickCityListener(object : FoodListAdapter.OnClickCityListener{
             override fun onClickCity(foodResponse: FoodResponse) {
                 //FoodDetailsDialogFragment().show(supportFragmentManager.beginTransaction(), "")
-                FoodDetailsDialogFragment.add(this@MainActivity, R.id.main_layout)
+                FoodDetailsFragment.add(this@MainActivity, R.id.main_layout)
                 mainActivityViewModel.showDetails(foodResponse)
             }
 

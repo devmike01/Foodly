@@ -10,6 +10,8 @@
     android:layout_width="match_parent">
 
     <ImageView
+        tools:visibility="visible"
+        android:visibility="gone"
         android:layout_marginBottom="20dp"
         tools:src="@drawable/ic_launcher_background"
         android:scaleType="centerCrop"
@@ -30,12 +32,14 @@
             <TextView
                 android:id="@+id/food_misc_tv"
                 style="@style/DefaultDetailsTextPadding"
+                android:textColor="@color/grey"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 tools:text="Hello world" />
 
             <TextView
                 android:id="@+id/price_tv"
+                android:textColor="@color/black"
                 style="@style/DefaultDetailsTextPadding"
                 android:layout_alignParentEnd="true"
                 android:textSize="20sp"
@@ -49,18 +53,20 @@
                 android:layout_below="@id/food_misc_tv"
                 tools:text="Hello world"
                 android:textSize="17sp"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:id="@+id/product_name_tv"
                 style="@style/DefaultDetailsTextPadding"/>
 
             <TextView
+                android:id="@+id/description_tv"
+                style="@style/DefaultDetailsTextPadding"
                 android:layout_below="@+id/product_name_tv"
                 android:layout_marginTop="20dp"
-                tools:text="Hello world"
-                android:textStyle="bold"
-                android:id="@+id/description_tv"
+                android:textColor="@color/grey"
                 android:textSize="12sp"
-                style="@style/DefaultDetailsTextPadding"/>
+                android:textStyle="bold"
+                tools:text="Hello world" />
 
             <!--    <TextView-->
             <!--        android:layout_below="@+id/description_tv"-->
@@ -69,13 +75,14 @@
             <!--        style="@style/DefaultDetailsTextPadding"/>-->
 
             <TextView
-                android:layout_below="@+id/description_tv"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
-                android:text="@string/title_quantity"
                 android:id="@+id/quantity_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description_tv"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/title_quantity"
+                android:textColor="@color/grey" />
         </RelativeLayout>
 
     </ScrollView>

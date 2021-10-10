@@ -1,23 +1,20 @@
 package com.example.foody.features.dialogs
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
 import com.example.foody.R
 import com.example.foody.databinding.FoodDetailsLayoutBinding
 import com.example.foody.features.MainActivityViewModel
-import com.example.foody.utils.ResourceStates
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import com.example.foody.utils.fadeIn
 
-class FoodDetailsDialogFragment : Fragment() {
+class FoodDetailsFragment : Fragment() {
 
     private val mainActivityViewModel: MainActivityViewModel by activityViewModels()
 
@@ -41,7 +38,7 @@ class FoodDetailsDialogFragment : Fragment() {
             context.supportFragmentManager
                 .beginTransaction()
                 .setCustomAnimations(R.anim.slide_in, android.R.anim.slide_out_right, R.anim.slide_in, android.R.anim.slide_out_right)
-                .replace(resId, FoodDetailsDialogFragment())
+                .replace(resId, FoodDetailsFragment())
                 .addToBackStack(null)
                 .commit()
         }
@@ -50,6 +47,7 @@ class FoodDetailsDialogFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mainActivityViewModel.foodDetailLiveData.observe(viewLifecycleOwner){
             _binding?.run {
+                foodIv.fadeIn()
                 Glide.with(requireActivity()).load(it.imageUrl).into(foodIv)
                 foodMiscTv.text = getString(R.string.misc, it.from, it.nutrients)
                 productNameTv.text = it.productName
@@ -59,4 +57,6 @@ class FoodDetailsDialogFragment : Fragment() {
             }
         }
     }
+
+
 }
